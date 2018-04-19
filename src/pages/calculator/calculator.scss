@@ -1,4 +1,7 @@
 page-calculator {
+    .display {
+      margin-top: 14rem;
+    }
     .container {
         display: flex;
         flex-direction: column;
@@ -20,6 +23,9 @@ page-calculator {
                 flex: 2;
                 padding: 0px !important;
                 margin: 0px !important;
+            }
+            .col-1 {
+                max-width: 8.3%;
             }
         }
  

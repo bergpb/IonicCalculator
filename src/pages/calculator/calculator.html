@@ -8,7 +8,7 @@
  
 <ion-content>
     <div class="container">
-        <form class="myInputRow">
+        <form class="myInputRow display">
             <ion-item>
                 <ion-input placeholder="0" name="display" [(ngModel)]="resultnormal"></ion-input>
             </ion-item>
@@ -17,36 +17,40 @@
         <p style="text-align: center"><strong>Binário</strong> - {{resultbin}} / <strong>Octal</strong> - {{resultoct}} / <strong>Hexadecimal</strong> - {{resulthex}}</p>
  
         <div class="row">
-            <button class="col2" ion-button color="danger" (click)="btnClicked('C')"> C </button>
-            <button class="col" ion-button color="energized" (click)="btnClicked('%')"> % </button>
-            <button class="col" ion-button color="energized" (click)="btnClicked('/')"> / </button>
+            <button style="color: orange;" class="col" ion-button color="light" (click)="btnClicked('C')"> C </button>
+            <button class="col" ion-button color="light" (click)="btnClicked('bs')">
+              <ion-icon ios="ios-backspace" md="ios-backspace-outline"></ion-icon>
+            </button>
+            <button class="col" ion-button color="light" (click)="btnClicked('/')"> / </button>
+            <button class="col" ion-button color="light" (click)="btnClicked('*')"> X </button>
         </div>
  
         <div class="row">
             <button class="col" ion-button color="light" (click)="btnClicked('7')"> 7 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('8')"> 8 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('9')"> 9 </button>
-            <button class="col" ion-button color="energized" (click)="btnClicked('*')"> * </button>
+            <button class="col" ion-button color="light" (click)="btnClicked('-')"> - </button>
         </div>
  
         <div class="row">
             <button class="col" ion-button color="light" (click)="btnClicked('4')"> 4 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('5')"> 5 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('6')"> 6 </button>
-            <button class="col" ion-button color="energized" (click)="btnClicked('-')"> - </button>
+            <button class="col" ion-button color="light" (click)="btnClicked('+')"> + </button>
         </div>
  
         <div class="row">
             <button class="col" ion-button color="light" (click)="btnClicked('1')"> 1 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('2')"> 2 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('3')"> 3 </button>
-            <button class="col" ion-button color="energized" (click)="btnClicked('+')"> + </button>
+            <button style="color: #fff; background-color: orange;" class="col" (click)="btnClicked('=')"> = </button>
         </div>
  
         <div class="row">
+            <button class="col" ion-button color="light" (click)="btnClicked('%')"> % </button>
             <button class="col" ion-button color="light" (click)="btnClicked('0')"> 0 </button>
             <button class="col" ion-button color="light" (click)="btnClicked('.')"> . </button>
-            <button class="col2" ion-button color="primary" (click)="btnClicked('=')"> = </button>
+            <button style="color: #fff; background-color: orange;" class="col" (click)="btnClicked('=')"> = </button>
         </div>
     </div>
 </ion-content>

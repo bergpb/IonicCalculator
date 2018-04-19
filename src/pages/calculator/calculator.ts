@@ -40,6 +40,11 @@ export class CalculatorPage {
             this.convertOct(this.resultnormal, 8);
             this.convertHex(this.resultnormal, 16);
          }
+         else if(btn == 'bs') {
+           this.resultnormal = this.resultnormal.substring(0, (this.resultnormal.length - 1) );
+           console.log(this.resultnormal+'\n');
+         }
+         
         else {
             this.resultnormal += btn;
             this.convertBin(this.resultnormal, 2);
