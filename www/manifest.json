@@ -1,13 +1,15 @@
 {
   "name": "IonicCalculator",
   "short_name": "IonicCalculator",
-  "start_url": "index.html",
+  "start_url": "index.html?launcher=true",
   "display": "standalone",
+  "orientation": "landscape",
+
   "icons": [{
     "src": "assets/imgs/logo.png",
     "sizes": "192x192",
     "type": "image/png"
   }],
-  "background_color": "#4e8ef7",
-  "theme_color": "#4e8ef7"
+  "background_color": "#0C9A8D",
+  "theme_color": "#0C9A8D"
 }
