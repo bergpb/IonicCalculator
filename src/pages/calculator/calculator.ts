@@ -40,16 +40,44 @@ export class CalculatorPage {
             this.convertOct(this.resultnormal, 8);
             this.convertHex(this.resultnormal, 16);
          }
-         else if(btn == 'bs') {
-           this.resultnormal = this.resultnormal.substring(0, (this.resultnormal.length - 1) );
-           console.log(this.resultnormal+'\n');
-         }
-         
-        else {
-            this.resultnormal += btn;
+         else if (btn == '%') {
+            this.resultnormal = (parseFloat(this.resultnormal) / 100).toString();
             this.convertBin(this.resultnormal, 2);
             this.convertOct(this.resultnormal, 8);
             this.convertHex(this.resultnormal, 16);
+         }
+         else if(btn == 'bs') {
+           this.resultnormal = this.resultnormal.toString();
+           this.resultnormal = this.resultnormal.substring(0, (this.resultnormal.length - 1) );
+           console.log(this.resultnormal);
+           
+           if(this.resultnormal == ''){
+            this.resultbin = '0';
+            this.resultoct = '0';
+            this.resulthex = '0';
+           } else {
+            this.convertBin(this.resultnormal, 2);
+            this.convertOct(this.resultnormal, 8);
+            this.convertHex(this.resultnormal, 16);
+           }
+           
+         }
+         
+        else {
+            //aceita o 0 antes do .
+            if(btn == "." && this.resultnormal == ""){
+                this.resultnormal += "0" + btn;
+            }          
+            //nao recebe 0 antes de um inteiro  
+            else if(btn == 0 && (this.resultnormal == "" || this.resultnormal == "0") && this.resultnormal.search(".") == -1){
+                // faz nad
+            } 
+            else {
+                this.resultnormal += btn;
+                this.convertBin(this.resultnormal, 2);
+                this.convertOct(this.resultnormal, 8);
+                this.convertHex(this.resultnormal, 16);
+            }
         }
     }
 }

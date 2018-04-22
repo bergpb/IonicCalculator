@@ -82,24 +82,51 @@ var CalculatorPage = (function () {
             this.convertOct(this.resultnormal, 8);
             this.convertHex(this.resultnormal, 16);
         }
-        else if (btn == 'bs') {
-            this.resultnormal = this.resultnormal.substring(0, (this.resultnormal.length - 1));
-            console.log(this.resultnormal + '\n');
-        }
-        else {
-            this.resultnormal += btn;
+        else if (btn == '%') {
+            this.resultnormal = (parseFloat(this.resultnormal) / 100).toString();
             this.convertBin(this.resultnormal, 2);
             this.convertOct(this.resultnormal, 8);
             this.convertHex(this.resultnormal, 16);
         }
+        else if (btn == 'bs') {
+            this.resultnormal = this.resultnormal.toString();
+            this.resultnormal = this.resultnormal.substring(0, (this.resultnormal.length - 1));
+            console.log(this.resultnormal);
+            if (this.resultnormal == '') {
+                this.resultbin = '0';
+                this.resultoct = '0';
+                this.resulthex = '0';
+            }
+            else {
+                this.convertBin(this.resultnormal, 2);
+                this.convertOct(this.resultnormal, 8);
+                this.convertHex(this.resultnormal, 16);
+            }
+        }
+        else {
+            //aceita o 0 antes do .
+            if (btn == "." && this.resultnormal == "") {
+                this.resultnormal += "0" + btn;
+            }
+            else if (btn == 0 && (this.resultnormal == "" || this.resultnormal == "0") && this.resultnormal.search(".") == -1) {
+                // faz nad
+            }
+            else {
+                this.resultnormal += btn;
+                this.convertBin(this.resultnormal, 2);
+                this.convertOct(this.resultnormal, 8);
+                this.convertHex(this.resultnormal, 16);
+            }
+        }
     };
     CalculatorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-calculator',template:/*ion-inline-start:"/home/bergpb/Downloads/angular_apps/IonicCalculator/src/pages/calculator/calculator.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            IonicPwaCalculator\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n \n<ion-content>\n    <div class="container">\n        <form class="myInputRow display">\n            <ion-item>\n                <ion-input placeholder="0" name="display" [(ngModel)]="resultnormal"></ion-input>\n            </ion-item>\n        </form>\n\n        <p style="text-align: center"><strong>Binário</strong> - {{resultbin}} / <strong>Octal</strong> - {{resultoct}} / <strong>Hexadecimal</strong> - {{resulthex}}</p>\n \n        <div class="row">\n            <button style="color: orange;" class="col" ion-button color="light" (click)="btnClicked(\'C\')"> C </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'bs\')">\n              <ion-icon ios="ios-backspace" md="ios-backspace-outline"></ion-icon>\n            </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'/\')"> / </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'*\')"> X </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'7\')"> 7 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'8\')"> 8 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'9\')"> 9 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'-\')"> - </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'4\')"> 4 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'5\')"> 5 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'6\')"> 6 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'+\')"> + </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'1\')"> 1 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'2\')"> 2 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'3\')"> 3 </button>\n            <button style="color: #fff; background-color: orange;" class="col" (click)="btnClicked(\'=\')"> = </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'%\')"> % </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'0\')"> 0 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'.\')"> . </button>\n            <button style="color: #fff; background-color: orange;" class="col" (click)="btnClicked(\'=\')"> = </button>\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/home/bergpb/Downloads/angular_apps/IonicCalculator/src/pages/calculator/calculator.html"*/
+            selector: 'page-calculator',template:/*ion-inline-start:"/home/bergpb/projetos/IonicCalculator/src/pages/calculator/calculator.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            IonicPwaCalculator\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n \n<ion-content>\n    <div class="container">\n        <form class="myInputRow display">\n            <ion-item>\n                <ion-input placeholder="0" name="display" [(ngModel)]="resultnormal"></ion-input>\n            </ion-item>\n        </form>\n\n        <p style="text-align: center"><strong>Binário</strong> - {{resultbin}} / <strong>Octal</strong> - {{resultoct}} / <strong>Hexadecimal</strong> - {{resulthex}}</p>\n \n        <div class="row">\n            <button style="color: orange;" class="col" ion-button color="light" (click)="btnClicked(\'C\')"> C </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'bs\')">\n              <ion-icon ios="ios-backspace" md="ios-backspace-outline"></ion-icon>\n            </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'/\')"> / </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'*\')"> X </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'7\')"> 7 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'8\')"> 8 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'9\')"> 9 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'-\')"> - </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'4\')"> 4 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'5\')"> 5 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'6\')"> 6 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'+\')"> + </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'1\')"> 1 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'2\')"> 2 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'3\')"> 3 </button>\n            <button style="color: #fff; background-color: orange;" class="col" (click)="btnClicked(\'=\')"> = </button>\n        </div>\n \n        <div class="row">\n            <button class="col" ion-button color="light" (click)="btnClicked(\'%\')"> % </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'0\')"> 0 </button>\n            <button class="col" ion-button color="light" (click)="btnClicked(\'.\')"> . </button>\n            <button style="color: #fff; background-color: orange;" class="col" (click)="btnClicked(\'=\')"> = </button>\n        </div>\n    </div>\n</ion-content>'/*ion-inline-end:"/home/bergpb/projetos/IonicCalculator/src/pages/calculator/calculator.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
     ], CalculatorPage);
     return CalculatorPage;
+    var _a;
 }());
 
 //# sourceMappingURL=calculator.js.map
@@ -214,7 +241,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/bergpb/Downloads/angular_apps/IonicCalculator/src/app/app.html"*/'<ion-nav #mainContent [root]="rootPage"></ion-nav>'/*ion-inline-end:"/home/bergpb/Downloads/angular_apps/IonicCalculator/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/bergpb/projetos/IonicCalculator/src/app/app.html"*/'<ion-nav #mainContent [root]="rootPage"></ion-nav>'/*ion-inline-end:"/home/bergpb/projetos/IonicCalculator/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
