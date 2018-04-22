@@ -4,10 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { CalculatorPage } from '../pages/calculator/calculator';
 
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
 @NgModule({
   declarations: [
     MyApp,
@@ -23,8 +19,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CalculatorPage
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
