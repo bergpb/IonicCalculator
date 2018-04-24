@@ -3,7 +3,7 @@
   "short_name": "IonicCalculator",
   "start_url": "index.html?launcher=true",
   "display": "standalone",
-  "orientation": "landscape",
+  "orientation": "portrait",
 
   "icons": [{
     "src": "assets/imgs/logo.png",
