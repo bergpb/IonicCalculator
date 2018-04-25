@@ -35,7 +35,7 @@ export class CalculatorPage {
             this.resulthex = '0'
         }
     }
-
+    
     btnClicked(btn) {
         if (btn == 'C') {
             this.resultnormal = '';
@@ -106,7 +106,7 @@ export class CalculatorPage {
             if (btn == "." && this.resultnormal == "") {
                 this.resultnormal += "0" + btn;
             }
-            //nao recebe 0 antes de um inteiro  
+            //nao recebe 0 antes de um inteiro
             else if (btn == 0 && (this.resultnormal == "" || this.resultnormal == "0") && this.resultnormal.search(".") == -1) {
                 //faz nada
             }
